@@ -15,6 +15,14 @@ import com.care.jdbc_service.*;
 public class MemberController {
 	private JdbcService jdbc;
 	
+	@RequestMapping("delete")
+	public String delete(Model model, @RequestParam("id") String id) {
+		model.addAttribute("id", id);
+		jdbc = new JdbcDeleteServiceImpl();
+		jdbc.execute(model);
+		return "redirect:content";
+	}
+	
 	@RequestMapping("modifySave")
 	public String modifySave(@RequestParam("id") String id, @RequestParam("name") String name, Model model) {
 		model.addAttribute("id", id);

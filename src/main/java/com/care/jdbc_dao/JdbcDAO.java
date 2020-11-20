@@ -20,6 +20,23 @@ public class JdbcDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public void delete(String id) {
+		String sql = "delete from test_jdbc where id = ?";
+		try {
+			con = DriverManager.getConnection(url, user, password);
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ps.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void modifySave(String id, String name) {
 		String sql = "update test_jdbc set name = ? where id = ?";
 		try {
