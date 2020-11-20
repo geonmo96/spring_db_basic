@@ -2,6 +2,8 @@ package com.care.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,13 @@ import com.care.jdbc_service.*;
 @RequestMapping("jdbc_test")
 public class MemberController {
 	private JdbcService jdbc;
+	public static JdbcTemplate template;
+	
+	public MemberController() {
+		String config = "classpath:applicationJDBC.xml";
+		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(config);
+		template = ctx.getBean("template",JdbcTemplate.class);
+	}
 	
 	@RequestMapping("delete")
 	public String delete(Model model, @RequestParam("id") String id) {

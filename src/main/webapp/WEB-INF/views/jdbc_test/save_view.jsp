@@ -14,7 +14,7 @@
 				<td>번호</td> <td><input type="text" name="id"></td>
 			</tr>
 			<tr>
-				<td>이름</td> <td><input type="text" name="name"</td>
+				<td>이름</td> <td><input type="text" name="name"></td>
 			</tr>
 			<tr> 
 				<td colspan="2">
